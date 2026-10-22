@@ -1,0 +1,68 @@
+BÁO CÁO CÁC CHỨC NĂNG ĐÃ LÀM ĐƯỢC - ĐỒ ÁN LẬP TRÌNH DI ĐỘNG
+================================================================================
+Họ và tên sinh viên: Huỳnh Nguyễn Vĩnh Phúc
+Mã số sinh viên: 2380614923
+Đề tài: Ứng dụng Quản lý & Bảo vệ Điện thoại Trẻ em (KidGuard - Goddy)
+Tên Project WebAPI: 2380614923_HuynhNguyenVinhPhuc_WebAPI
+Cơ sở dữ liệu: DB_2380614923_HuynhNguyenVinhPhuc (Microsoft SQL Server)
+Ứng dụng Mobile: Flutter (kidguard_2380614923_vinhphuc)
+GitHub Repository: https://github.com/phuchh9999-sketch/LTDD_HuynhNguyenVinhPhucz_2380614923
+================================================================================
+
+TỔNG HỢP CÁC CHỨC NĂNG ĐÃ HOÀN THÀNH THEO THANG ĐIỂM:
+
+1. ĐĂNG KÝ TÀI KHOẢN QUA EMAIL & XÁC THỰC
+- Đăng ký tài khoản với đầy đủ thông tin: Họ tên, Tên đăng nhập, Email, Mật khẩu, Số điện thoại, Vai trò (Phụ huynh, Nhân viên, Admin).
+- Kiểm tra tính hợp lệ của email và tự động phân quyền theo chuẩn ASP.NET Core Identity.
+- Đăng ký sinh trắc học (vân tay & khuôn mặt) liên kết trực tiếp vào tài khoản người dùng ngay tại thời điểm đăng ký hoặc cập nhật trong ứng dụng.
+
+2. ĐĂNG NHẬP (TÊN ĐĂNG NHẬP + MẬT KHẨU + MÃ OTP XÁC THỰC EMAIL)
+- Đăng nhập bảo mật 2 lớp (2FA): Người dùng nhập Username/Password, hệ thống gửi mã OTP 6 số ngẫu nhiên qua email và yêu cầu xác thực OTP trước khi cấp Access Token JWT.
+- Tích hợp đăng nhập nhanh bằng Sinh trắc học (Vân tay / Khuôn mặt) đã lưu trong tài khoản.
+
+3. PHÂN QUYỀN NGƯỜI DÙNG (ROLE-BASED AUTHORIZATION)
+- Quản trị viên (Admin): Đăng nhập tự động chuyển hướng vào Admin Dashboard quản lý toàn bộ hệ thống (người dùng, thiết bị, cảnh báo, thống kê).
+- Nhân viên hỗ trợ (Staff): Đăng nhập chuyển hướng vào Staff Dashboard (xử lý báo cáo sự cố, hỗ trợ phụ huynh, tiếp nhận cảnh báo vi phạm).
+- Khách hàng (Phụ huynh - Parent): Đăng nhập chuyển hướng vào Parent Dashboard (giám sát thiết bị con cái, định vị, cài đặt giới hạn thời gian, chặn ứng dụng, quản lý nhiệm vụ).
+- Trẻ em (Child Mode): Chế độ bảo vệ trẻ em chuyên biệt, giám sát thời gian sử dụng thực tế, tự động khóa thiết bị khi hết giờ hoặc khi phụ huynh gửi lệnh khóa từ xa.
+
+4. CÁC CHỨC NĂNG CRUD CHI TIẾT (5.5 ĐIỂM)
+A. Dành cho Quản trị viên (Admin):
+   - CRUD Người dùng: Xem danh sách, thêm, sửa thông tin, xóa tài khoản Phụ huynh / Nhân viên.
+   - CRUD Thiết bị trẻ em: Quản lý toàn bộ danh sách thiết bị trong hệ thống, xem trạng thái kết nối, cập nhật hoặc xóa thiết bị.
+   - Quản lý cảnh báo & Báo cáo: Xem và xử lý các báo cáo sự cố từ nhân viên (Staff Incident Reports), gửi cảnh báo (Admin Warnings) tới người dùng.
+B. Dành cho Phụ huynh (Parent):
+   - CRUD Thiết bị Trẻ em: Thêm mới thiết bị con cái (kết nối mã ghép nối hoặc quét mã QR), cập nhật tên con/độ tuổi/giới hạn thời gian, xóa thiết bị.
+   - Điều khiển từ xa: Gửi lệnh khóa màn hình tức thời (Remote Lock) và mở khóa màn hình cho điện thoại con.
+   - CRUD Khu vực an toàn (Safe Zones / Geofencing): Thêm địa điểm an toàn (Nhà, Trường học, Nhà ông bà), chỉnh sửa bán kính an toàn (mét), tọa độ GPS (Vĩ độ/Kinh độ), bật/tắt kích hoạt, xóa khu vực.
+   - CRUD Nhiệm vụ & Thói quen (Habit Quests): Tạo nhiệm vụ hàng ngày (Làm bài tập, Dọn phòng, Đi ngủ đúng giờ), chấm điểm hoàn thành, đổi thưởng điểm số, sửa/xóa nhiệm vụ.
+   - CRUD Quy tắc hạn chế ứng dụng (App Restrictions): Xem danh sách ứng dụng được theo dõi, bật/tắt chặn (Block), cấu hình số phút tối đa được phép dùng mỗi ngày.
+C. Dành cho Nhân viên (Staff):
+   - CRUD Báo cáo sự cố (Staff Incident Reports): Nhân viên tạo báo cáo gửi Admin khi phát hiện sự cố bảo mật hoặc trẻ em gặp nguy hiểm, chỉnh sửa trạng thái xử lý, xem lịch sử báo cáo.
+
+5. CÁC CHỨC NĂNG THUYẾT TRÌNH ĐẶC SẮC (3.5 ĐIỂM)
+a. Đăng nhập bằng khuôn mặt (Face Recognition Authentication):
+   - Chụp ảnh chân dung và nhận diện khuôn mặt người dùng để xác thực đăng nhập trực tiếp không cần gõ mật khẩu, tự động so khớp khuôn mặt đã đăng ký vào tài khoản.
+b. Chia sẻ & Giám sát vị trí (GPS Geofencing):
+   - Định vị tọa độ GPS thời gian thực (Latitude, Longitude), tính khoảng cách đến các khu vực an toàn (Safe Zones) đã thiết lập, tự động phát hiện và gửi cảnh báo khi trẻ em rời khỏi phạm vi an toàn.
+d. Đo tiếng ồn môi trường & Cảm biến chuyển động (Noise & Accelerometer Sensing):
+   - Tích hợp Micro đo độ ồn xung quanh thời gian thực (đơn vị Decibel - dB).
+   - Tích hợp cảm biến gia tốc chuyển động (Accelerometer sensor) theo 3 trục X, Y, Z để phát hiện rung lắc hoặc rơi rớt điện thoại.
+e. Nhận diện vân tay & Quét mã QR (Biometrics & QR Pairing):
+   - Hỗ trợ xác thực vân tay qua Local Authentication API của hệ điều hành.
+   - Sinh mã QR và quét mã QR để ghép nối nhanh chóng giữa thiết bị của Phụ huynh và máy Trẻ em.
+
+6. TÍNH NĂNG MỚI ĐỘC QUYỀN - CHƯA TỪNG CÓ TRÊN CÁC APP KHÁC (1.0 ĐIỂM)
+- Tên tính năng: "Hệ thống tự động phát hiện va chạm xung đột & giằng co khẩn cấp (Dual-Sensor Emergency SOS)"
+- Mô tả hoạt động:
+  Ứng dụng chạy chế độ giám sát ngầm, kết hợp đồng thời 2 luồng cảm biến phần cứng:
+  1) Cảm biến Micro: Thu nhận và phân tích biên độ âm thanh môi trường. Nếu phát hiện tiếng la hét, cãi vã hoặc âm thanh va đập lớn vượt ngưỡng an toàn (> 85 dB).
+  2) Cảm biến Gia tốc (Accelerometer): Liên tục tính toán độ biến thiên gia tốc tổng hợp |a| = sqrt(ax² + ay² + az²). Nếu phát hiện rung lắc giằng co mạnh bất thường (> 18 m/s²).
+  -> Khi CẢ HAI điều kiện trên xảy ra đồng thời, hệ thống xác định trẻ em đang gặp tình huống nguy hiểm (bị bắt nạt, giằng co cướp giật hoặc tai nạn):
+  - Tự động kích hoạt còi báo động khẩn cấp SOS trên máy trẻ em để cầu cứu xung quanh.
+  - Tự động gửi cảnh báo khẩn cấp cấp độ cao (Critical Security Alert) kèm tọa độ GPS chính xác về máy Phụ huynh và hệ thống quản trị Admin theo thời gian thực.
+
+7. GIAO DIỆN & TRẢI NGHIỆM NGƯỜI DÙNG (1.0 ĐIỂM)
+- Thiết kế hiện đại chuẩn Material Design 3, màu sắc tinh tế, trực quan, biểu đồ thống kê rõ ràng.
+- Giao diện tối ưu theo vai trò: Admin, Nhân viên, Phụ huynh và Chế độ Trẻ em có cơ chế khóa cứng chống thoát ứng dụng trái phép (chỉ mở khi nhập đúng mật khẩu phụ huynh).
+- Tích hợp cơ chế tự động chuyển đổi Host (Multi-host fallback: 10.0.2.2, LAN IP, localhost) giúp cả nhóm và giáo viên đều có thể chạy ứng dụng mượt mà trên mọi thiết bị và máy ảo Android.
