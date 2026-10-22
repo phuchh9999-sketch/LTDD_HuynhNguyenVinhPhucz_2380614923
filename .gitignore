@@ -1,0 +1,28 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET / C# Build outputs
+**/bin/
+**/obj/
+
+# Flutter / Dart Build outputs
+**/.dart_tool/
+**/build/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+
+# Android / Gradle temporary
+**/.gradle/
+**/local.properties
+
+# Logs and OS files
+*.log
+Thumbs.db
+
+# Ensure root Release APK is tracked
+!KidGuard_VinhPhuc_2380614923.apk
